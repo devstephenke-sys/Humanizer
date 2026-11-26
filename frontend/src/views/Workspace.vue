@@ -9,7 +9,7 @@
 
     <div v-else-if="documents.length === 0" class="text-center py-12 border border-[var(--border)] rounded-lg bg-[var(--code-bg)]">
       <p class="text-[var(--text)] mb-4">No saved documents yet.</p>
-      <router-link to="/humanizer" class="inline-block bg-[var(--accent)] text-white px-6 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity">
+      <router-link to="/humanizer" class="inline-block bg-[var(--accent)] text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity min-h-[44px]">
         Start Writing
       </router-link>
     </div>

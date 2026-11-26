@@ -10,13 +10,13 @@
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <router-link
           to="/humanizer"
-          class="inline-block bg-[var(--accent)] text-white px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity"
+          class="inline-flex items-center justify-center bg-[var(--accent)] text-white px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity min-h-[44px]"
         >
           Get Started
         </router-link>
         <router-link
           to="/detector"
-          class="inline-block border border-[var(--border)] px-8 py-3 rounded-lg font-medium text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
+          class="inline-flex items-center justify-center border border-[var(--border)] px-8 py-3 rounded-lg font-medium text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors min-h-[44px]"
         >
           Try AI Detector
         </router-link>
@@ -33,7 +33,7 @@
         <div class="text-[var(--accent)] mb-3 flex justify-center">
           <component :is="tool.icon" class="w-6 h-6" />
         </div>
-        <h3 class="text-base md:text-lg font-semibold text-[var(--text-h)] mb-2">{{ tool.name }}</h3>
+        <h2 class="text-base md:text-lg font-semibold text-[var(--text-h)] mb-2">{{ tool.name }}</h2>
         <p class="text-[var(--text)] text-sm">{{ tool.description }}</p>
       </div>
     </div>

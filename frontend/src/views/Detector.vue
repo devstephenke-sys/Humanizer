@@ -44,17 +44,17 @@
         ⚠️ Short texts (under 100 words) may produce less reliable results.
       </div>
 
-      <div class="mt-6 flex gap-3">
+      <div class="mt-6 flex gap-3 flex-wrap">
         <button
           @click="detect"
           :disabled="!inputText || loading"
-          class="flex-1 bg-[var(--accent)] text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+          class="flex-1 min-w-[120px] bg-[var(--accent)] text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity min-h-[44px]"
         >
           {{ loading ? 'Scanning...' : 'Analyze' }}
         </button>
         <button
           @click="clearInput"
-          class="px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
+          class="min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors min-h-[44px]"
         >
           Clear
         </button>
@@ -100,13 +100,13 @@
       <div class="flex flex-wrap gap-3">
         <button
           @click="copyToClipboard"
-          class="flex-1 min-w-[140px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
+          class="flex-1 min-w-[140px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors min-h-[44px]"
         >
           Copy Results
         </button>
         <router-link
           to="/humanizer"
-          class="flex-1 min-w-[140px] px-4 py-3 bg-[var(--accent)] text-white rounded-lg font-medium hover:opacity-90 text-center transition-opacity"
+          class="flex-1 min-w-[140px] px-4 py-3 bg-[var(--accent)] text-white rounded-lg font-medium hover:opacity-90 text-center transition-opacity min-h-[44px] inline-flex items-center justify-center"
         >
           Humanize This Text
         </router-link>

@@ -18,15 +18,15 @@
           @input="updateCounts"
         ></textarea>
 
-        <div class="mt-6 flex gap-3">
+        <div class="mt-6 flex gap-3 flex-wrap">
           <button
             @click="improve"
             :disabled="!inputText || loading"
-            class="flex-1 bg-[var(--accent)] text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+            class="flex-1 min-w-[120px] bg-[var(--accent)] text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity min-h-[44px]"
           >
             {{ loading ? 'Processing...' : 'Improve' }}
           </button>
-          <button @click="clearInput" class="px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors">Clear</button>
+          <button @click="clearInput" class="min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors min-h-[44px]">Clear</button>
         </div>
       </div>
 
@@ -46,9 +46,9 @@
         </div>
 
         <div v-if="outputText" class="mt-6 flex flex-wrap gap-3">
-          <button @click="copyToClipboard" class="flex-1 min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors">Copy</button>
-          <button @click="downloadTxt" class="flex-1 min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors">Download TXT</button>
-          <button v-if="authStore.token" @click="saveDocument" class="flex-1 min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors">Save</button>
+          <button @click="copyToClipboard" class="flex-1 min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors min-h-[44px]">Copy</button>
+          <button @click="downloadTxt" class="flex-1 min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors min-h-[44px]">Download TXT</button>
+          <button v-if="authStore.token" @click="saveDocument" class="flex-1 min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors min-h-[44px]">Save</button>
         </div>
 
         <div v-if="error" class="mt-4 p-4 bg-[var(--error-bg)] border border-[var(--error)] rounded-lg text-[var(--error)]">{{ error }}</div>

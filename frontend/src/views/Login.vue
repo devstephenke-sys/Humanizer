@@ -31,7 +31,7 @@
       <button
         @click="login"
         :disabled="loading || !email || !password"
-        class="w-full bg-[var(--accent)] text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+        class="w-full bg-[var(--accent)] text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity min-h-[44px]"
       >
         {{ loading ? 'Signing in...' : 'Sign In' }}
       </button>

@@ -11,10 +11,10 @@
         <div>
           <h3 class="text-lg font-semibold text-[var(--text-h)] mb-4">Tools</h3>
           <ul class="space-y-2 text-sm text-[var(--text)]">
-            <li><router-link to="/humanizer" class="hover:text-[var(--accent)] transition-colors">Humanizer</router-link></li>
-            <li><router-link to="/detector" class="hover:text-[var(--accent)] transition-colors">AI Detector</router-link></li>
-            <li><router-link to="/rewriter" class="hover:text-[var(--accent)] transition-colors">Rewriter</router-link></li>
-            <li><router-link to="/paraphraser" class="hover:text-[var(--accent)] transition-colors">Paraphraser</router-link></li>
+            <li><router-link to="/humanizer" class="hover:text-[var(--accent)] transition-colors block py-1">Humanizer</router-link></li>
+            <li><router-link to="/detector" class="hover:text-[var(--accent)] transition-colors block py-1">AI Detector</router-link></li>
+            <li><router-link to="/rewriter" class="hover:text-[var(--accent)] transition-colors block py-1">Rewriter</router-link></li>
+            <li><router-link to="/paraphraser" class="hover:text-[var(--accent)] transition-colors block py-1">Paraphraser</router-link></li>
           </ul>
         </div>
         <div>

@@ -67,17 +67,18 @@
           </div>
         </div>
 
-        <div class="mt-6 flex gap-3">
+        <div class="mt-6 flex gap-3 flex-wrap">
           <button
             @click="humanize"
             :disabled="!inputText || loading"
-            class="flex-1 bg-[var(--accent)] text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+            class="flex-1 min-w-[120px] bg-[var(--accent)] text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity min-h-[44px]"
           >
             {{ loading ? 'Processing...' : 'Humanize' }}
           </button>
           <button
             @click="clearInput"
-            class="px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
+            class="min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors min-h-[44px]"
+            aria-label="Clear input text"
           >
             Clear
           </button>
@@ -105,26 +106,30 @@
         <div v-if="outputText" class="mt-6 flex flex-wrap gap-3">
           <button
             @click="copyToClipboard"
-            class="flex-1 min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
+            class="flex-1 min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors min-h-[44px]"
+            aria-label="Copy humanized text to clipboard"
           >
             Copy
           </button>
           <button
             @click="downloadTxt"
-            class="flex-1 min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
+            class="flex-1 min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors min-h-[44px]"
+            aria-label="Download as TXT file"
           >
             Download TXT
           </button>
           <button
             @click="downloadDocx"
-            class="flex-1 min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
+            class="flex-1 min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors min-h-[44px]"
+            aria-label="Download as DOCX file"
           >
             Download DOCX
           </button>
           <button
             v-if="authStore.token"
             @click="saveDocument"
-            class="flex-1 min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
+            class="flex-1 min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors min-h-[44px]"
+            aria-label="Save document to workspace"
           >
             Save
           </button>
