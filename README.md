@@ -1,4 +1,4 @@
-# Draftwell
+# Humanizer
 
 A free AI writing workspace for rewriting drafts and estimating AI-like patterns. Inspired by publicly available AI writing tools, with all features accessible without payment.
 
