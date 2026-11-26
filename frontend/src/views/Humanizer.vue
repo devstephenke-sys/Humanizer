@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-6xl mx-auto">
+  <div class="max-w-7xl mx-auto">
     <h1 class="text-3xl font-bold text-[var(--text-h)] mb-6">AI Humanizer</h1>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -102,29 +102,29 @@
           <div v-else class="text-[var(--text)] opacity-50">Result will appear here...</div>
         </div>
 
-        <div v-if="outputText" class="mt-6 flex gap-3">
+        <div v-if="outputText" class="mt-6 flex flex-wrap gap-3">
           <button
             @click="copyToClipboard"
-            class="flex-1 px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
+            class="flex-1 min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
           >
             Copy
           </button>
           <button
             @click="downloadTxt"
-            class="flex-1 px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
+            class="flex-1 min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
           >
             Download TXT
           </button>
           <button
             @click="downloadDocx"
-            class="flex-1 px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
+            class="flex-1 min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
           >
             Download DOCX
           </button>
           <button
             v-if="authStore.token"
             @click="saveDocument"
-            class="flex-1 px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
+            class="flex-1 min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
           >
             Save
           </button>
@@ -139,7 +139,7 @@
     <!-- Comparison View -->
     <div v-if="showComparison && inputText && outputText" class="mt-6 border border-[var(--border)] rounded-lg p-6">
       <h2 class="text-lg font-semibold text-[var(--text-h)] mb-4">Side-by-Side Comparison</h2>
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="p-4 bg-[var(--code-bg)] rounded-lg">
           <h3 class="text-sm font-medium text-[var(--text-h)] mb-2">Original</h3>
           <p class="text-sm text-[var(--text)] whitespace-pre-wrap">{{ inputText }}</p>

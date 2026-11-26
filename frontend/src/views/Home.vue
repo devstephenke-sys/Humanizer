@@ -1,39 +1,39 @@
 <template>
   <div class="text-center">
-    <h1 class="text-5xl font-bold text-[var(--text-h)] mb-6">
+    <h1 class="text-4xl md:text-5xl font-bold text-[var(--text-h)] mb-6">
       Your Free AI Writing Workspace
     </h1>
-    <p class="text-xl text-[var(--text)] mb-12 max-w-2xl mx-auto">
+    <p class="text-lg md:text-xl text-[var(--text)] mb-12 max-w-3xl mx-auto">
       Transform AI-generated text into natural language, detect AI patterns, and improve your writing with powerful tools—all completely free.
     </p>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-12">
       <div
         v-for="tool in tools"
         :key="tool.name"
-        class="border border-[var(--border)] rounded-lg p-6 hover:shadow-lg transition-shadow cursor-pointer"
+        class="border border-[var(--border)] rounded-lg p-5 hover:shadow-lg transition-all cursor-pointer hover:border-[var(--accent)]"
         @click="$router.push(tool.path)"
       >
-        <div class="text-[var(--accent)] mb-3">
-          <component :is="tool.icon" class="w-8 h-8" />
+        <div class="text-[var(--accent)] mb-3 flex justify-center">
+          <component :is="tool.icon" class="w-6 h-6" />
         </div>
-        <h3 class="text-lg font-semibold text-[var(--text-h)] mb-2">{{ tool.name }}</h3>
+        <h3 class="text-base md:text-lg font-semibold text-[var(--text-h)] mb-2">{{ tool.name }}</h3>
         <p class="text-[var(--text)] text-sm">{{ tool.description }}</p>
       </div>
     </div>
 
     <div class="border-t border-[var(--border)] pt-8">
-      <h2 class="text-2xl font-semibold text-[var(--text-h)] mb-4">Why Draftwell?</h2>
+      <h2 class="text-2xl font-semibold text-[var(--text-h)] mb-6">Why Humanizer?</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-        <div>
+        <div class="p-4 bg-[var(--code-bg)] rounded-lg">
           <h3 class="font-semibold text-[var(--text-h)] mb-2">100% Free</h3>
           <p class="text-[var(--text)] text-sm">No subscriptions, no payments, no word limits. All features are accessible to everyone.</p>
         </div>
-        <div>
+        <div class="p-4 bg-[var(--code-bg)] rounded-lg">
           <h3 class="font-semibold text-[var(--text-h)] mb-2">Privacy First</h3>
           <p class="text-[var(--text)] text-sm">Your documents are stored securely with user isolation. Unsaved text is never stored.</p>
         </div>
-        <div>
+        <div class="p-4 bg-[var(--code-bg)] rounded-lg">
           <h3 class="font-semibold text-[var(--text-h)] mb-2">Multiple Tools</h3>
           <p class="text-[var(--text)] text-sm">Humanizer, detector, rewriter, paraphraser, and more—all in one workspace.</p>
         </div>

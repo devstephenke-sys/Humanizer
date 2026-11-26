@@ -1,12 +1,12 @@
 <template>
-  <nav class="border-b border-[var(--border)] bg-[var(--bg)]">
+  <nav class="border-b border-[var(--border)] bg-[var(--bg)] sticky top-0 z-50">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
           <router-link to="/" class="text-xl font-bold text-[var(--text-h)]">
-            Draftwell
+            Humanizer
           </router-link>
-          <div class="ml-10 flex space-x-4">
+          <div class="ml-8 hidden md:flex space-x-1">
             <router-link
               to="/humanizer"
               class="rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-[var(--accent-bg)]"
@@ -23,57 +23,60 @@
             </router-link>
             <div class="relative group">
               <button
-                class="rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-[var(--accent-bg)] text-[var(--text)]"
+                class="rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-[var(--accent-bg)] text-[var(--text)] flex items-center gap-1"
               >
                 More Tools
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
               </button>
-              <div class="absolute left-0 mt-2 w-48 rounded-md bg-[var(--bg)] shadow-lg border border-[var(--border)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                <div class="py-1">
+              <div class="absolute left-0 mt-2 w-56 rounded-lg bg-[var(--bg)] shadow-xl border border-[var(--border)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="py-2">
                   <router-link
                     to="/rewriter"
-                    class="block px-4 py-2 text-sm text-[var(--text)] hover:bg-[var(--accent-bg)]"
+                    class="block px-4 py-2 text-sm text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
                   >
                     Rewriter
                   </router-link>
                   <router-link
                     to="/paraphraser"
-                    class="block px-4 py-2 text-sm text-[var(--text)] hover:bg-[var(--accent-bg)]"
+                    class="block px-4 py-2 text-sm text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
                   >
                     Paraphraser
                   </router-link>
                   <router-link
                     to="/essay-rewriter"
-                    class="block px-4 py-2 text-sm text-[var(--text)] hover:bg-[var(--accent-bg)]"
+                    class="block px-4 py-2 text-sm text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
                   >
                     Essay Rewriter
                   </router-link>
                   <router-link
                     to="/article-rewriter"
-                    class="block px-4 py-2 text-sm text-[var(--text)] hover:bg-[var(--accent-bg)]"
+                    class="block px-4 py-2 text-sm text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
                   >
                     Article Rewriter
                   </router-link>
                   <router-link
                     to="/sentence-rewriter"
-                    class="block px-4 py-2 text-sm text-[var(--text)] hover:bg-[var(--accent-bg)]"
+                    class="block px-4 py-2 text-sm text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
                   >
                     Sentence Rewriter
                   </router-link>
                   <router-link
                     to="/paragraph-rewriter"
-                    class="block px-4 py-2 text-sm text-[var(--text)] hover:bg-[var(--accent-bg)]"
+                    class="block px-4 py-2 text-sm text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
                   >
                     Paragraph Rewriter
                   </router-link>
                   <router-link
                     to="/content-improvement"
-                    class="block px-4 py-2 text-sm text-[var(--text)] hover:bg-[var(--accent-bg)]"
+                    class="block px-4 py-2 text-sm text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
                   >
                     Content Improvement
                   </router-link>
                   <router-link
                     to="/grammar"
-                    class="block px-4 py-2 text-sm text-[var(--text)] hover:bg-[var(--accent-bg)]"
+                    class="block px-4 py-2 text-sm text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
                   >
                     Grammar Check
                   </router-link>
@@ -82,7 +85,7 @@
             </div>
           </div>
         </div>
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-2">
           <button
             @click="themeStore.toggleTheme"
             class="rounded-md p-2 text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
