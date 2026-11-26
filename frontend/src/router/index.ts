@@ -12,6 +12,7 @@ import ContentImprovement from '../views/ContentImprovement.vue'
 import Grammar from '../views/Grammar.vue'
 import Workspace from '../views/Workspace.vue'
 import Login from '../views/Login.vue'
+import NotFound from '../views/NotFound.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -29,6 +30,7 @@ const router = createRouter({
     { path: '/grammar', name: 'grammar', component: Grammar },
     { path: '/workspace', name: 'workspace', component: Workspace },
     { path: '/login', name: 'login', component: Login },
+    { path: '/:pathMatch(.*)*', name: 'not-found', component: NotFound },
   ],
 })
 

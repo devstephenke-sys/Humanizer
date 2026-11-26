@@ -7,11 +7,13 @@
       <div class="border border-[var(--border)] rounded-lg p-6">
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-lg font-semibold text-[var(--text-h)]">Original Article</h2>
-          <div class="text-sm text-[var(--text)]">{{ wordCount }} words</div>
+          <div class="text-sm text-[var(--text)]">
+            {{ wordCount }} words · {{ characterCount }} characters
+          </div>
         </div>
         <textarea
           v-model="inputText"
-          class="w-full h-64 p-4 border border-[var(--border)] rounded-lg bg-[var(--bg)] text-[var(--text)] resize-none focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+          class="w-full h-48 md:h-64 p-4 border border-[var(--border)] rounded-lg bg-[var(--bg)] text-[var(--text)] resize-none focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
           placeholder="Paste your article here..."
           @input="updateCounts"
         ></textarea>
@@ -31,8 +33,11 @@
       <div class="border border-[var(--border)] rounded-lg p-6">
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-lg font-semibold text-[var(--text-h)]">Rewritten Article</h2>
+          <div v-if="outputText" class="text-sm text-[var(--text)]">
+            {{ outputWordCount }} words · {{ outputCharacterCount }} characters
+          </div>
         </div>
-        <div class="w-full h-64 p-4 border border-[var(--border)] rounded-lg bg-[var(--bg)] text-[var(--text)] overflow-y-auto">
+        <div class="w-full h-48 md:h-64 p-4 border border-[var(--border)] rounded-lg bg-[var(--bg)] text-[var(--text)] overflow-y-auto">
           <div v-if="loading" class="flex items-center justify-center h-full">
             <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--accent)]"></div>
           </div>
@@ -40,13 +45,13 @@
           <div v-else class="text-[var(--text)] opacity-50">Result will appear here...</div>
         </div>
 
-        <div v-if="outputText" class="mt-6 flex gap-3">
-          <button @click="copyToClipboard" class="flex-1 px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors">Copy</button>
-          <button @click="downloadTxt" class="flex-1 px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors">Download TXT</button>
-          <button v-if="authStore.token" @click="saveDocument" class="flex-1 px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors">Save</button>
+        <div v-if="outputText" class="mt-6 flex flex-wrap gap-3">
+          <button @click="copyToClipboard" class="flex-1 min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors">Copy</button>
+          <button @click="downloadTxt" class="flex-1 min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors">Download TXT</button>
+          <button v-if="authStore.token" @click="saveDocument" class="flex-1 min-w-[100px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors">Save</button>
         </div>
 
-        <div v-if="error" class="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">{{ error }}</div>
+        <div v-if="error" class="mt-4 p-4 bg-[var(--error-bg)] border border-[var(--error)] rounded-lg text-[var(--error)]">{{ error }}</div>
       </div>
     </div>
   </div>
@@ -65,6 +70,9 @@ const loading = ref(false)
 const error = ref('')
 
 const wordCount = computed(() => inputText.value.trim().split(/\s+/).filter(w => w).length)
+const characterCount = computed(() => inputText.value.length)
+const outputWordCount = computed(() => outputText.value.trim().split(/\s+/).filter(w => w).length)
+const outputCharacterCount = computed(() => outputText.value.length)
 
 function updateCounts() {}
 

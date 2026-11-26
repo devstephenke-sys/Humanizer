@@ -98,24 +98,140 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
             </svg>
           </button>
+          <div class="hidden md:flex items-center space-x-2">
+            <router-link
+              v-if="authStore.token"
+              to="/workspace"
+              class="rounded-md px-3 py-2 text-sm font-medium text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
+            >
+              Workspace
+            </router-link>
+            <router-link
+              v-else
+              to="/login"
+              class="rounded-md px-3 py-2 text-sm font-medium text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
+            >
+              Sign In
+            </router-link>
+            <button
+              v-if="authStore.token"
+              @click="authStore.logout"
+              class="rounded-md px-3 py-2 text-sm font-medium text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
+            >
+              Sign Out
+            </button>
+          </div>
+          <!-- Mobile menu button -->
+          <button
+            @click="mobileMenuOpen = !mobileMenuOpen"
+            class="md:hidden rounded-md p-2 text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
+          >
+            <svg v-if="!mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg v-else class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div v-if="mobileMenuOpen" class="md:hidden border-t border-[var(--border)] bg-[var(--bg)]">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <router-link
+          to="/humanizer"
+          class="block rounded-md px-3 py-2 text-base font-medium transition-colors hover:bg-[var(--accent-bg)]"
+          :class="isActive('/humanizer') ? 'text-[var(--accent)]' : 'text-[var(--text)]'"
+          @click="mobileMenuOpen = false"
+        >
+          Humanizer
+        </router-link>
+        <router-link
+          to="/detector"
+          class="block rounded-md px-3 py-2 text-base font-medium transition-colors hover:bg-[var(--accent-bg)]"
+          :class="isActive('/detector') ? 'text-[var(--accent)]' : 'text-[var(--text)]'"
+          @click="mobileMenuOpen = false"
+        >
+          AI Detector
+        </router-link>
+        <router-link
+          to="/rewriter"
+          class="block rounded-md px-3 py-2 text-base font-medium text-[var(--text)] transition-colors hover:bg-[var(--accent-bg)]"
+          @click="mobileMenuOpen = false"
+        >
+          Rewriter
+        </router-link>
+        <router-link
+          to="/paraphraser"
+          class="block rounded-md px-3 py-2 text-base font-medium text-[var(--text)] transition-colors hover:bg-[var(--accent-bg)]"
+          @click="mobileMenuOpen = false"
+        >
+          Paraphraser
+        </router-link>
+        <router-link
+          to="/essay-rewriter"
+          class="block rounded-md px-3 py-2 text-base font-medium text-[var(--text)] transition-colors hover:bg-[var(--accent-bg)]"
+          @click="mobileMenuOpen = false"
+        >
+          Essay Rewriter
+        </router-link>
+        <router-link
+          to="/article-rewriter"
+          class="block rounded-md px-3 py-2 text-base font-medium text-[var(--text)] transition-colors hover:bg-[var(--accent-bg)]"
+          @click="mobileMenuOpen = false"
+        >
+          Article Rewriter
+        </router-link>
+        <router-link
+          to="/sentence-rewriter"
+          class="block rounded-md px-3 py-2 text-base font-medium text-[var(--text)] transition-colors hover:bg-[var(--accent-bg)]"
+          @click="mobileMenuOpen = false"
+        >
+          Sentence Rewriter
+        </router-link>
+        <router-link
+          to="/paragraph-rewriter"
+          class="block rounded-md px-3 py-2 text-base font-medium text-[var(--text)] transition-colors hover:bg-[var(--accent-bg)]"
+          @click="mobileMenuOpen = false"
+        >
+          Paragraph Rewriter
+        </router-link>
+        <router-link
+          to="/content-improvement"
+          class="block rounded-md px-3 py-2 text-base font-medium text-[var(--text)] transition-colors hover:bg-[var(--accent-bg)]"
+          @click="mobileMenuOpen = false"
+        >
+          Content Improvement
+        </router-link>
+        <router-link
+          to="/grammar"
+          class="block rounded-md px-3 py-2 text-base font-medium text-[var(--text)] transition-colors hover:bg-[var(--accent-bg)]"
+          @click="mobileMenuOpen = false"
+        >
+          Grammar Check
+        </router-link>
+        <div class="border-t border-[var(--border)] pt-2 mt-2">
           <router-link
             v-if="authStore.token"
             to="/workspace"
-            class="rounded-md px-3 py-2 text-sm font-medium text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
+            class="block rounded-md px-3 py-2 text-base font-medium text-[var(--text)] transition-colors hover:bg-[var(--accent-bg)]"
+            @click="mobileMenuOpen = false"
           >
             Workspace
           </router-link>
           <router-link
             v-else
             to="/login"
-            class="rounded-md px-3 py-2 text-sm font-medium text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
+            class="block rounded-md px-3 py-2 text-base font-medium text-[var(--text)] transition-colors hover:bg-[var(--accent-bg)]"
+            @click="mobileMenuOpen = false"
           >
             Sign In
           </router-link>
           <button
             v-if="authStore.token"
-            @click="authStore.logout"
-            class="rounded-md px-3 py-2 text-sm font-medium text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
+            @click="authStore.logout(); mobileMenuOpen = false"
+            class="block w-full text-left rounded-md px-3 py-2 text-base font-medium text-[var(--text)] transition-colors hover:bg-[var(--accent-bg)]"
           >
             Sign Out
           </button>
@@ -126,6 +242,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
 import { useThemeStore } from '../stores/theme'
@@ -133,6 +250,7 @@ import { useThemeStore } from '../stores/theme'
 const route = useRoute()
 const authStore = useAuthStore()
 const themeStore = useThemeStore()
+const mobileMenuOpen = ref(false)
 
 function isActive(path: string) {
   return route.path === path

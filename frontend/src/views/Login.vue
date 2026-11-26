@@ -11,7 +11,9 @@
           type="email"
           class="w-full p-3 border border-[var(--border)] rounded-lg bg-[var(--bg)] text-[var(--text)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
           placeholder="your@email.com"
+          @input="emailError = ''"
         />
+        <p v-if="emailError" class="mt-1 text-sm text-[var(--error)]">{{ emailError }}</p>
       </div>
 
       <div class="mb-6">
@@ -21,7 +23,9 @@
           type="password"
           class="w-full p-3 border border-[var(--border)] rounded-lg bg-[var(--bg)] text-[var(--text)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
           placeholder="••••••••"
+          @input="passwordError = ''"
         />
+        <p v-if="passwordError" class="mt-1 text-sm text-[var(--error)]">{{ passwordError }}</p>
       </div>
 
       <button
@@ -38,7 +42,7 @@
         </router-link>
       </div>
 
-      <div v-if="error" class="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+      <div v-if="error" class="mt-4 p-4 bg-[var(--error-bg)] border border-[var(--error)] rounded-lg text-[var(--error)]">
         {{ error }}
       </div>
     </div>
@@ -62,10 +66,41 @@ const authStore = useAuthStore()
 
 const email = ref('')
 const password = ref('')
+const emailError = ref('')
+const passwordError = ref('')
 const loading = ref(false)
 const error = ref('')
 
+function validateEmail(email: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  return emailRegex.test(email)
+}
+
+function validateForm(): boolean {
+  let isValid = true
+
+  if (!email.value) {
+    emailError.value = 'Email is required'
+    isValid = false
+  } else if (!validateEmail(email.value)) {
+    emailError.value = 'Please enter a valid email address'
+    isValid = false
+  }
+
+  if (!password.value) {
+    passwordError.value = 'Password is required'
+    isValid = false
+  } else if (password.value.length < 6) {
+    passwordError.value = 'Password must be at least 6 characters'
+    isValid = false
+  }
+
+  return isValid
+}
+
 async function login() {
+  if (!validateForm()) return
+
   loading.value = true
   error.value = ''
 

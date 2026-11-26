@@ -11,7 +11,7 @@
       </div>
       <textarea
         v-model="inputText"
-        class="w-full h-64 p-4 border border-[var(--border)] rounded-lg bg-[var(--bg)] text-[var(--text)] resize-none focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+        class="w-full h-48 md:h-64 p-4 border border-[var(--border)] rounded-lg bg-[var(--bg)] text-[var(--text)] resize-none focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
         placeholder="Paste your text here to check for AI patterns..."
         @input="updateCounts"
       ></textarea>
@@ -40,7 +40,7 @@
         </div>
       </div>
 
-      <div v-if="wordCount > 0 && wordCount < 100" class="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg text-yellow-700 text-sm">
+      <div v-if="wordCount > 0 && wordCount < 100" class="mt-4 p-3 bg-[var(--warning-bg)] border border-[var(--warning)] rounded-lg text-[var(--warning)] text-sm">
         ⚠️ Short texts (under 100 words) may produce less reliable results.
       </div>
 
@@ -97,23 +97,23 @@
         </div>
       </div>
 
-      <div class="flex gap-3">
+      <div class="flex flex-wrap gap-3">
         <button
           @click="copyToClipboard"
-          class="flex-1 px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
+          class="flex-1 min-w-[140px] px-4 py-3 border border-[var(--border)] rounded-lg text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
         >
           Copy Results
         </button>
         <router-link
           to="/humanizer"
-          class="flex-1 px-4 py-3 bg-[var(--accent)] text-white rounded-lg font-medium hover:opacity-90 text-center transition-opacity"
+          class="flex-1 min-w-[140px] px-4 py-3 bg-[var(--accent)] text-white rounded-lg font-medium hover:opacity-90 text-center transition-opacity"
         >
           Humanize This Text
         </router-link>
       </div>
     </div>
 
-    <div v-if="error" class="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+    <div v-if="error" class="mt-4 p-4 bg-[var(--error-bg)] border border-[var(--error)] rounded-lg text-[var(--error)]">
       {{ error }}
     </div>
   </div>
@@ -135,9 +135,9 @@ const characterCount = computed(() => inputText.value.length)
 const scoreColor = computed(() => {
   if (!result.value) return 'text-[var(--text)]'
   const score = result.value.overall_score
-  if (score < 30) return 'text-green-600'
-  if (score < 70) return 'text-yellow-600'
-  return 'text-red-600'
+  if (score < 30) return 'text-[var(--success)]'
+  if (score < 70) return 'text-[var(--warning)]'
+  return 'text-[var(--error)]'
 })
 
 function updateCounts() {
@@ -171,9 +171,9 @@ function clearInput() {
 }
 
 function highlightClass(score: number) {
-  if (score < 30) return 'bg-green-50 border border-green-200'
-  if (score < 70) return 'bg-yellow-50 border border-yellow-200'
-  return 'bg-red-50 border border-red-200'
+  if (score < 30) return 'bg-[var(--success-bg)] border border-[var(--success)]'
+  if (score < 70) return 'bg-[var(--warning-bg)] border border-[var(--warning)]'
+  return 'bg-[var(--error-bg)] border border-[var(--error)]'
 }
 
 async function copyToClipboard() {

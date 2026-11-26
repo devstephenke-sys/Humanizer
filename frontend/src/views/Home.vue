@@ -1,17 +1,33 @@
 <template>
   <div class="text-center">
-    <h1 class="text-4xl md:text-5xl font-bold text-[var(--text-h)] mb-6">
-      Your Free AI Writing Workspace
-    </h1>
-    <p class="text-lg md:text-xl text-[var(--text)] mb-12 max-w-3xl mx-auto">
-      Transform AI-generated text into natural language, detect AI patterns, and improve your writing with powerful tools—all completely free.
-    </p>
+    <div class="mb-8 md:mb-12">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-h)] mb-4 md:mb-6">
+        Your Free AI Writing Workspace
+      </h1>
+      <p class="text-lg md:text-xl text-[var(--text)] mb-8 max-w-3xl mx-auto">
+        Transform AI-generated text into natural language, detect AI patterns, and improve your writing with powerful tools—all completely free.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <router-link
+          to="/humanizer"
+          class="inline-block bg-[var(--accent)] text-white px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity"
+        >
+          Get Started
+        </router-link>
+        <router-link
+          to="/detector"
+          class="inline-block border border-[var(--border)] px-8 py-3 rounded-lg font-medium text-[var(--text)] hover:bg-[var(--accent-bg)] transition-colors"
+        >
+          Try AI Detector
+        </router-link>
+      </div>
+    </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-12">
       <div
         v-for="tool in tools"
         :key="tool.name"
-        class="border border-[var(--border)] rounded-lg p-5 hover:shadow-lg transition-all cursor-pointer hover:border-[var(--accent)]"
+        class="border border-[var(--border)] rounded-lg p-5 hover:shadow-lg transition-all cursor-pointer hover:border-[var(--accent)] hover:-translate-y-1"
         @click="$router.push(tool.path)"
       >
         <div class="text-[var(--accent)] mb-3 flex justify-center">

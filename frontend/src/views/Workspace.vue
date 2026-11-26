@@ -7,9 +7,9 @@
       <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--accent)]"></div>
     </div>
 
-    <div v-else-if="documents.length === 0" class="text-center py-12 border border-[var(--border)] rounded-lg">
-      <p class="text-[var(--text)]">No saved documents yet.</p>
-      <router-link to="/humanizer" class="inline-block mt-4 bg-[var(--accent)] text-white px-6 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity">
+    <div v-else-if="documents.length === 0" class="text-center py-12 border border-[var(--border)] rounded-lg bg-[var(--code-bg)]">
+      <p class="text-[var(--text)] mb-4">No saved documents yet.</p>
+      <router-link to="/humanizer" class="inline-block bg-[var(--accent)] text-white px-6 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity">
         Start Writing
       </router-link>
     </div>
@@ -18,13 +18,14 @@
       <div
         v-for="doc in documents"
         :key="doc.id"
-        class="border border-[var(--border)] rounded-lg p-4 hover:shadow-lg transition-shadow"
+        class="border border-[var(--border)] rounded-lg p-4 hover:shadow-lg hover:border-[var(--accent)] transition-all cursor-pointer group"
+        @click="openDocument(doc)"
       >
         <div class="flex justify-between items-start mb-2">
-          <h3 class="font-semibold text-[var(--text-h)] truncate flex-1">{{ doc.title }}</h3>
+          <h3 class="font-semibold text-[var(--text-h)] truncate flex-1 group-hover:text-[var(--accent)] transition-colors">{{ doc.title }}</h3>
           <button
-            @click="deleteDocument(doc.id)"
-            class="ml-2 text-red-500 hover:text-red-700 transition-colors"
+            @click.stop="deleteDocument(doc.id)"
+            class="ml-2 text-red-500 hover:text-red-700 transition-colors opacity-0 group-hover:opacity-100"
             title="Delete"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -32,21 +33,16 @@
             </svg>
           </button>
         </div>
-        <p class="text-xs text-[var(--text)] mb-2">{{ doc.tool }}</p>
+        <p class="text-xs text-[var(--text)] mb-2 capitalize">{{ doc.tool.replace('-', ' ') }}</p>
         <p class="text-sm text-[var(--text)] mb-3 line-clamp-3">{{ doc.content.substring(0, 150) }}...</p>
         <div class="flex justify-between items-center">
           <span class="text-xs text-[var(--text)]">{{ formatDate(doc.created_at) }}</span>
-          <button
-            @click="openDocument(doc)"
-            class="text-sm text-[var(--accent)] hover:underline"
-          >
-            Open
-          </button>
+          <span class="text-sm text-[var(--accent)] group-hover:underline">Open</span>
         </div>
       </div>
     </div>
 
-    <div v-if="error" class="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+    <div v-if="error" class="mt-4 p-4 bg-[var(--error-bg)] border border-[var(--error)] rounded-lg text-[var(--error)]">
       {{ error }}
     </div>
   </div>

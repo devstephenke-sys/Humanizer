@@ -13,7 +13,7 @@
         </div>
         <textarea
           v-model="inputText"
-          class="w-full h-64 p-4 border border-[var(--border)] rounded-lg bg-[var(--bg)] text-[var(--text)] resize-none focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+          class="w-full h-48 md:h-64 p-4 border border-[var(--border)] rounded-lg bg-[var(--bg)] text-[var(--text)] resize-none focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
           placeholder="Paste your text here..."
           @input="updateCounts"
         ></textarea>
@@ -93,7 +93,7 @@
           </div>
         </div>
         <div
-          class="w-full h-64 p-4 border border-[var(--border)] rounded-lg bg-[var(--bg)] text-[var(--text)] overflow-y-auto"
+          class="w-full h-48 md:h-64 p-4 border border-[var(--border)] rounded-lg bg-[var(--bg)] text-[var(--text)] overflow-y-auto"
         >
           <div v-if="loading" class="flex items-center justify-center h-full">
             <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--accent)]"></div>
@@ -130,7 +130,7 @@
           </button>
         </div>
 
-        <div v-if="error" class="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+        <div v-if="error" class="mt-4 p-4 bg-[var(--error-bg)] border border-[var(--error)] rounded-lg text-[var(--error)]">
           {{ error }}
         </div>
       </div>
